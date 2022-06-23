@@ -7,3 +7,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+
+.col-12{
+    td{
+        min-height: 57px;
+        .btn{
+            min-height: 41px!important;
+        }
+    }
+}
