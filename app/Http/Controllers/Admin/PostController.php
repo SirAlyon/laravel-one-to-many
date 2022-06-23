@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Category;
 
+use Illuminate\Http\Request;
 
 use App\Http\Requests\PostRequest;
 
@@ -47,6 +48,7 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+        //  dd($request->all());
         $val_data = $request->validated();
 
         //Generate the slug
@@ -55,10 +57,11 @@ class PostController extends Controller
         //Create the resource
         //dd($slug);
         $val_data['slug'] = $slug;
+        //dd($val_data);
         //redirect to a get route
         Post::create($val_data);
 
-        return redirect()->route('admin.posts.index')->with('message', 'Post Created Successfully');
+        return redirect()->route('admin.posts.index')->with('success', 'Post Created Successfully');
     }
 
     /**
@@ -81,7 +84,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.posts.edit', compact('post', 'categories'));
         
     }
 
@@ -92,12 +96,14 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(PostRequest $request, Post $post)
+    public function update(Request $request, Post $post)
     {
+        //dd($request->all());
         //validate data
         $val_data = $request->validate([
-            'title' => ['required', 'unique:posts', 'max:150'],
+            'title' => ['required', 'max:150'],
             'cover_image' => ['nullable'],
+            'category_id' => ['nullable', 'exists:categories,id'],
             'content' => ['nullable']
 
         ]);
@@ -110,7 +116,7 @@ class PostController extends Controller
 
         $post->update($val_data);
 
-        return redirect()->route('admin.posts.index')->with('message', 'Post Updated Successfully');
+        return redirect()->route('admin.posts.index')->with('success', 'Post Updated Successfully');
     }
 
     /**

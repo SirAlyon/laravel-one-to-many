@@ -18,19 +18,19 @@
             <small id="cover_imageHelp" class="form-text text-muted">Type the cover image link</small>
         </div>
 
-        <label for="categories">Categories</label>
-        <select class="form-select " aria-label="Default select example" name="categories">
+        <label for="category">Category</label>
+        <select class="form-select @error('category') is-invalid @enderror" aria-label="Default select example" name="category" id="category">
             <option selected>Choose Category...</option>
             @foreach ($categories as $category)
-              <option value="{{$category->id}}">{{$category->name}}</option>  
+              <option value="{{$category->id}}" @if (old('category') == $category->id) selected="selected" @endif>{{$category->name}}</option>  
             @endforeach
         </select>
-        <small id="categoriesHelp" class="form-text text-muted my-3">Select post's category</small>
+        <small id="categoryHelp" class="form-text text-muted my-3">Select post's category</small>
 
 
         <div class="form-group my-3">
             <label for="content">Content</label>
-            <input type="text" class="form-control @error('content') is-invalid @enderror" id="content" name="content" aria-describedby="contentHelp" value="{{old('content‰')}}">
+            <input type="text" class="form-control @error('content') is-invalid @enderror" id="content" name="content" aria-describedby="contentHelp" value="{{old('content')}}">
             <small id="contentHelp" class="form-text text-muted">Type the cover image link</small>
         </div>
 

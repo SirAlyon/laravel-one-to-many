@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+@include('partials.success')
+
 <div class="d-flex justify-content-between py-3">
     <h1>All Posts</h1>
     <div><a href="{{route('admin.posts.create')}}" class="btn btn-primary">Add Post</a></div>

@@ -4,6 +4,7 @@
     <h2 class="py-4">Edit Post</h2>
     @include('partials.error')
 
+
     <form action="{{route('admin.posts.update', $post->id)}}" method="post">
         @csrf
         @method('PUT')
@@ -23,6 +24,16 @@
                 <img width="150" class="shadow" src="{{$post->cover_image}}" alt="{{$post->title}}">
             </div>
         </div>
+
+        <label for="category_id">Category</label>
+        <select class="form-select @error('category_id') is-invalid @enderror" aria-label="Default select example" name="category_id" id="category_id">
+            <option selected>Choose Category...</option>
+            @foreach ($categories as $category)
+              <option value="{{$category->id}}" @if ($post->category_id == $category->id) selected="selected" @endif>{{$category->name}}</option>  
+            @endforeach
+        </select>
+        <small id="category_idHelp" class="form-text text-muted my-3">Select post's category</small>
+
 
         <div class="form-group mb-4">
             <label for="content">Content</label>
