@@ -84,16 +84,15 @@
 @section('page_script')
     <script type="text/javascript">
         function checkInputUpdate(event) {
-            //console.log(event.target.id);
-
-            let cat_id = event.target.id.replace("btn", "input");
-
-            //console.log(cat_id);
-
-            let input = document.getElementById(cat_id)
-            //console.log(input.defaultValue, input.value);
-
             if (input.defaultValue === input.value) {
+                 //console.log(event.target.id);
+
+                let cat_id = event.target.id.replace("btn", "input");
+
+                //console.log(cat_id);
+
+                let input = document.getElementById(cat_id)
+                //console.log(input.defaultValue, input.value);
                 let inputValue = input.value
                 input.focus()
                 input.value = ''
