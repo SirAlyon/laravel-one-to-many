@@ -8,7 +8,7 @@
     <div><a href="{{route('admin.posts.create')}}" class="btn btn-primary">Add Post</a></div>
 </div>
 
-<table class="table table-striped  table-responsive table-dark">
+<table class="table table-striped  table-responsive table-light border-dark">
     <thead>
         <tr>
           <th scope="col">ID</th>
@@ -87,3 +87,4 @@
     </tbody>
 </table>
 @endsection
+

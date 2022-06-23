@@ -24,6 +24,10 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->
 
     //Admin Posts
     Route::resource('posts', 'PostController');
+
+    Route::resource('categories', 'CategoryController');
+
+
 });
 
 Route::get("{any?}", function(){

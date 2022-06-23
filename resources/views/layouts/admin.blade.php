@@ -62,10 +62,10 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">
-                              Another View
-                            </a>
-                        </li>
+                          <a class="nav-link" href="{{route('admin.categories.index')}}">
+                            Categories
+                          </a>
+                      </li>
                       </ul>
                     </div>
                 </nav>
@@ -78,4 +78,5 @@
         </div>
 
     </div>
+    @yield('page_script')
 </body>
